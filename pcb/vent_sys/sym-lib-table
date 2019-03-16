@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name RF_Module)(type Legacy)(uri ${KIPRJMOD}/lib/RF_Module.lib)(options "")(descr ""))
+  (lib (name maxim)(type Legacy)(uri ${KIPRJMOD}/lib/maxim.lib)(options "")(descr ""))
+  (lib (name Converter_ACDC)(type Legacy)(uri ${KIPRJMOD}/lib/Converter_ACDC.lib)(options "")(descr ""))
+)
