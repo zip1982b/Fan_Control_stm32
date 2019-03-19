@@ -59,39 +59,6 @@ F 3 "" H 9000 1200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L maxim:DS2482-100 U?
-U 1 1 5C5AE47D
-P 2600 1300
-F 0 "U?" H 2600 1978 50  0000 C CNN
-F 1 "DS2482-100" H 2600 1887 50  0000 C CNN
-F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 2650 900 50  0001 L CNN
-F 3 "https://datasheets.maximintegrated.com/en/ds/DS2482-100.pdf" H 2870 1550 50  0001 C CNN
-	1    2600 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Variable R?
-U 1 1 5C5AE99F
-P 3400 1150
-F 0 "R?" H 3528 1196 50  0000 L CNN
-F 1 "R_Variable" H 3528 1105 50  0000 L CNN
-F 2 "" V 3330 1150 50  0001 C CNN
-F 3 "~" H 3400 1150 50  0001 C CNN
-	1    3400 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5C5AEA85
-P 800 1000
-F 0 "R?" H 870 1046 50  0000 L CNN
-F 1 "R" H 870 955 50  0000 L CNN
-F 2 "" V 730 1000 50  0001 C CNN
-F 3 "~" H 800 1000 50  0001 C CNN
-	1    800  1000
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R R?
 U 1 1 5C5AEB4D
 P 2800 2800
@@ -138,17 +105,6 @@ F 2 "" H 950 5700 50  0001 C CNN
 F 3 "~" H 950 5700 50  0001 C CNN
 	1    950  5700
 	-1   0    0    1   
-$EndComp
-$Comp
-L Connector:Conn_01x03_Female J?
-U 1 1 5C5B0332
-P 4000 1400
-F 0 "J?" H 4027 1426 50  0000 L CNN
-F 1 "Conn_01x03_Female" H 4027 1335 50  0000 L CNN
-F 2 "" H 4000 1400 50  0001 C CNN
-F 3 "~" H 4000 1400 50  0001 C CNN
-	1    4000 1400
-	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R?
@@ -281,35 +237,6 @@ Wire Wire Line
 	6750 2000 7500 2000
 Wire Wire Line
 	7500 2000 7500 1800
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5C5B7267
-P 2950 700
-F 0 "#PWR?" H 2950 550 50  0001 C CNN
-F 1 "+3.3V" H 2965 873 50  0000 C CNN
-F 2 "" H 2950 700 50  0001 C CNN
-F 3 "" H 2950 700 50  0001 C CNN
-	1    2950 700 
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2600 800  2950 800 
-Wire Wire Line
-	2950 800  2950 750 
-$Comp
-L power:GND #PWR?
-U 1 1 5C5B77FB
-P 2600 1950
-F 0 "#PWR?" H 2600 1700 50  0001 C CNN
-F 1 "GND" H 2605 1777 50  0000 C CNN
-F 2 "" H 2600 1950 50  0001 C CNN
-F 3 "" H 2600 1950 50  0001 C CNN
-	1    2600 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2600 1800 2600 1850
-NoConn ~ 3100 1100
 Wire Wire Line
 	1200 3350 1150 3350
 Wire Wire Line
@@ -332,88 +259,6 @@ Wire Wire Line
 Connection ~ 1650 5400
 Wire Wire Line
 	1650 5400 2300 5400
-$Comp
-L Device:R R?
-U 1 1 5C5B9E9D
-P 1400 1000
-F 0 "R?" H 1470 1046 50  0000 L CNN
-F 1 "R" H 1470 955 50  0000 L CNN
-F 2 "" V 1330 1000 50  0001 C CNN
-F 3 "~" H 1400 1000 50  0001 C CNN
-	1    1400 1000
-	1    0    0    -1  
-$EndComp
-Connection ~ 2950 750 
-Wire Wire Line
-	2950 750  2950 700 
-Wire Wire Line
-	1400 850  1400 750 
-Connection ~ 1400 750 
-Wire Wire Line
-	1400 750  2950 750 
-Wire Wire Line
-	2100 1100 1700 1100
-Wire Wire Line
-	1700 1100 1700 1150
-Wire Wire Line
-	1700 1150 1400 1150
-Wire Wire Line
-	800  850  800  750 
-Wire Wire Line
-	800  750  1400 750 
-Wire Wire Line
-	800  1150 800  1250
-Wire Wire Line
-	800  1250 1900 1250
-Wire Wire Line
-	1900 1250 1900 1200
-Wire Wire Line
-	1900 1200 2100 1200
-$Comp
-L power:GND #PWR?
-U 1 1 5C5C0A5C
-P 1600 1550
-F 0 "#PWR?" H 1600 1300 50  0001 C CNN
-F 1 "GND" H 1605 1377 50  0000 C CNN
-F 2 "" H 1600 1550 50  0001 C CNN
-F 3 "" H 1600 1550 50  0001 C CNN
-	1    1600 1550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2100 1400 1600 1400
-Wire Wire Line
-	1600 1400 1600 1500
-Wire Wire Line
-	2100 1500 1600 1500
-Connection ~ 1600 1500
-Wire Wire Line
-	1600 1500 1600 1550
-Wire Wire Line
-	3400 1000 3400 750 
-Wire Wire Line
-	3400 750  2950 750 
-Wire Wire Line
-	3100 1400 3400 1400
-Wire Wire Line
-	3400 1400 3400 1300
-Wire Wire Line
-	3800 1400 3400 1400
-Connection ~ 3400 1400
-Wire Wire Line
-	3800 1500 3800 1850
-Wire Wire Line
-	3800 1850 2600 1850
-Connection ~ 2600 1850
-Wire Wire Line
-	2600 1850 2600 1950
-Wire Wire Line
-	3800 1300 3700 1300
-Wire Wire Line
-	3700 1300 3700 750 
-Wire Wire Line
-	3700 750  3400 750 
-Connection ~ 3400 750 
 $Comp
 L power:GND #PWR?
 U 1 1 5C5D7125
@@ -781,17 +626,172 @@ Wire Wire Line
 Connection ~ 3900 5100
 Wire Wire Line
 	3900 5100 3900 5400
-Text Label 4200 1700 0    50   ~ 0
-Herz_counter
-Wire Wire Line
-	4650 1700 4200 1700
 Wire Wire Line
 	3300 3050 2800 3050
+Connection ~ 2800 3050
+Text Label 3300 3050 0    50   ~ 0
+Herz_couner
+Wire Wire Line
+	4650 1700 4200 1700
+Text Label 4200 1700 0    50   ~ 0
+Herz_counter
 Wire Bus Line
 	10800 750  10800 2100
 Wire Bus Line
 	8000 2100 10800 2100
-Connection ~ 2800 3050
-Text Label 3300 3050 0    50   ~ 0
-Herz_couner
+$Comp
+L maxim:DS2482-100 U?
+U 1 1 5C5AE47D
+P 2600 1300
+F 0 "U?" H 2600 1978 50  0000 C CNN
+F 1 "DS2482-100" H 2600 1887 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 2650 900 50  0001 L CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/DS2482-100.pdf" H 2870 1550 50  0001 C CNN
+	1    2600 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Variable R?
+U 1 1 5C5AE99F
+P 3400 1150
+F 0 "R?" H 3528 1196 50  0000 L CNN
+F 1 "R_Variable" H 3528 1105 50  0000 L CNN
+F 2 "" V 3330 1150 50  0001 C CNN
+F 3 "~" H 3400 1150 50  0001 C CNN
+	1    3400 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5C5AEA85
+P 800 1000
+F 0 "R?" H 870 1046 50  0000 L CNN
+F 1 "R" H 870 955 50  0000 L CNN
+F 2 "" V 730 1000 50  0001 C CNN
+F 3 "~" H 800 1000 50  0001 C CNN
+	1    800  1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Female J?
+U 1 1 5C5B0332
+P 4000 1400
+F 0 "J?" H 4027 1426 50  0000 L CNN
+F 1 "Conn_01x03_Female" H 4027 1335 50  0000 L CNN
+F 2 "" H 4000 1400 50  0001 C CNN
+F 3 "~" H 4000 1400 50  0001 C CNN
+	1    4000 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5C5B7267
+P 2950 700
+F 0 "#PWR?" H 2950 550 50  0001 C CNN
+F 1 "+3.3V" H 2965 873 50  0000 C CNN
+F 2 "" H 2950 700 50  0001 C CNN
+F 3 "" H 2950 700 50  0001 C CNN
+	1    2950 700 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 800  2950 800 
+Wire Wire Line
+	2950 800  2950 750 
+$Comp
+L power:GND #PWR?
+U 1 1 5C5B77FB
+P 2600 1950
+F 0 "#PWR?" H 2600 1700 50  0001 C CNN
+F 1 "GND" H 2605 1777 50  0000 C CNN
+F 2 "" H 2600 1950 50  0001 C CNN
+F 3 "" H 2600 1950 50  0001 C CNN
+	1    2600 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 1800 2600 1850
+NoConn ~ 3100 1100
+$Comp
+L Device:R R?
+U 1 1 5C5B9E9D
+P 1400 1000
+F 0 "R?" H 1470 1046 50  0000 L CNN
+F 1 "R" H 1470 955 50  0000 L CNN
+F 2 "" V 1330 1000 50  0001 C CNN
+F 3 "~" H 1400 1000 50  0001 C CNN
+	1    1400 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 750  2950 750 
+Connection ~ 2950 750 
+Wire Wire Line
+	3400 750  2950 750 
+Wire Wire Line
+	2950 750  2950 700 
+Wire Wire Line
+	1400 850  1400 750 
+Connection ~ 1400 750 
+Wire Wire Line
+	800  750  1400 750 
+Wire Wire Line
+	2100 1100 1700 1100
+Wire Wire Line
+	1700 1100 1700 1150
+Wire Wire Line
+	1700 1150 1400 1150
+Wire Wire Line
+	800  850  800  750 
+Wire Wire Line
+	800  1150 800  1250
+Wire Wire Line
+	800  1250 1900 1250
+Wire Wire Line
+	1900 1250 1900 1200
+Wire Wire Line
+	1900 1200 2100 1200
+$Comp
+L power:GND #PWR?
+U 1 1 5C5C0A5C
+P 1600 1550
+F 0 "#PWR?" H 1600 1300 50  0001 C CNN
+F 1 "GND" H 1605 1377 50  0000 C CNN
+F 2 "" H 1600 1550 50  0001 C CNN
+F 3 "" H 1600 1550 50  0001 C CNN
+	1    1600 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 1400 1600 1400
+Wire Wire Line
+	1600 1400 1600 1500
+Wire Wire Line
+	2100 1500 1600 1500
+Connection ~ 1600 1500
+Wire Wire Line
+	1600 1500 1600 1550
+Wire Wire Line
+	3400 1000 3400 750 
+Connection ~ 3400 750 
+Wire Wire Line
+	3700 750  3400 750 
+Wire Wire Line
+	3100 1400 3400 1400
+Wire Wire Line
+	3400 1400 3400 1300
+Connection ~ 3400 1400
+Wire Wire Line
+	3800 1400 3400 1400
+Wire Wire Line
+	3800 1500 3800 1850
+Wire Wire Line
+	3800 1850 2600 1850
+Connection ~ 2600 1850
+Wire Wire Line
+	2600 1850 2600 1950
+Wire Wire Line
+	3800 1300 3700 1300
+Wire Wire Line
+	3700 1300 3700 750 
 $EndSCHEMATC
