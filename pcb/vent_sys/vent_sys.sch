@@ -635,8 +635,40 @@ Wire Wire Line
 	4650 1700 4200 1700
 Text Label 4200 1700 0    50   ~ 0
 Herz_counter
+Entry Wire Line
+	9200 2100 9300 2200
+Wire Wire Line
+	8500 1200 8000 1200
+Wire Wire Line
+	8000 1200 8000 2000
+Entry Wire Line
+	8000 2000 8100 2100
+Text Label 7300 3800 0    50   ~ 0
+Reset
+Text Label 8050 1200 0    50   ~ 0
+Reset
+Wire Wire Line
+	6750 3800 9300 3800
+Wire Wire Line
+	9300 3800 9300 2200
+Entry Wire Line
+	9100 2100 9200 2200
+Wire Wire Line
+	9200 2200 9200 3650
+Wire Wire Line
+	9200 3650 6750 3650
+Text Label 7300 3650 0    50   ~ 0
+nIRQ
+Wire Wire Line
+	8500 1300 8150 1300
+Wire Wire Line
+	8150 1300 8150 2000
 Wire Bus Line
 	10800 750  10800 2100
 Wire Bus Line
 	8000 2100 10800 2100
+Entry Wire Line
+	8150 2000 8250 2100
+Text Label 8200 1300 0    50   ~ 0
+nIRQ
 $EndSCHEMATC
