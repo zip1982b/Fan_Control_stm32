@@ -2,4 +2,6 @@
   (lib (name RF_Module)(type Legacy)(uri ${KIPRJMOD}/lib/RF_Module.lib)(options "")(descr ""))
   (lib (name maxim)(type Legacy)(uri ${KIPRJMOD}/lib/maxim.lib)(options "")(descr ""))
   (lib (name Converter_ACDC)(type Legacy)(uri ${KIPRJMOD}/lib/Converter_ACDC.lib)(options "")(descr ""))
+  (lib (name vent_sys-rescue)(type Legacy)(uri ${KIPRJMOD}/vent_sys-rescue.lib)(options "")(descr ""))
+  (lib (name stm32f103c8t6-module-china)(type Legacy)(uri ${MY_LIB}/stm32f103c8t6-module-china.lib)(options "")(descr ""))
 )

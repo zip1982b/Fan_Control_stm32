@@ -90,8 +90,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_Blue_Pin GPIO_PIN_13
 #define LED_Blue_GPIO_Port GPIOC
-#define Fan_in_Pin GPIO_PIN_10
-#define Fan_in_GPIO_Port GPIOB
+#define Fan_Pin GPIO_PIN_15
+#define Fan_GPIO_Port GPIOC
 #define Herz_counter_Pin GPIO_PIN_12
 #define Herz_counter_GPIO_Port GPIOB
 #define Herz_counter_EXTI_IRQn EXTI15_10_IRQn

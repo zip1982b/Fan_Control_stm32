@@ -154,9 +154,9 @@ void Start_change_speed(void const * argument)
   {
     //osDelay(1);
 	  xQueueReceive(xQueueDIMHandle, &dim, 0);
-	  HAL_GPIO_WritePin(Fan_in_GPIO_Port, Fan_in_Pin, GPIO_PIN_SET); //gpio_set_level(Fan_in, 1);
+	  HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_SET); //gpio_set_level(Fan_in, 1);
 	  vTaskDelay(50 / portTICK_RATE_MS);
-	  HAL_GPIO_WritePin(Fan_in_GPIO_Port, Fan_in_Pin, GPIO_PIN_RESET); //gpio_set_level(Fan_in, 0);
+	  HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_RESET); //gpio_set_level(Fan_in, 0);
 	  vTaskDelay(dim / portTICK_RATE_MS);
   }
   /* USER CODE END Start_change_speed */
