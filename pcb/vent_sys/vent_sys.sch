@@ -158,12 +158,6 @@ Wire Wire Line
 Connection ~ 1650 5400
 Wire Wire Line
 	1650 5400 2300 5400
-Wire Wire Line
-	8500 900  8400 900 
-Wire Wire Line
-	8500 1000 8400 1000
-Wire Wire Line
-	8400 1000 8400 900 
 Text Notes 1200 5600 0    50   ~ 0
 L
 Text Notes 1200 5700 0    50   ~ 0
@@ -214,9 +208,9 @@ Entry Wire Line
 	10700 1300 10800 1400
 Text Label 9850 1000 0    50   ~ 0
 NSS
-Text Label 10500 1100 0    50   ~ 0
+Text Label 9850 1100 0    50   ~ 0
 MOSI
-Text Label 10500 1200 0    50   ~ 0
+Text Label 9850 1200 0    50   ~ 0
 MISO
 Text Label 9850 1300 0    50   ~ 0
 SCK
@@ -242,7 +236,7 @@ U 1 1 5C65C4D9
 P 10150 5300
 F 0 "C2" H 10265 5346 50  0000 L CNN
 F 1 "0.01uF - 300V" H 10265 5255 50  0000 L CNN
-F 2 "Capacitor_THT:C_Rect_L9.0mm_W9.8mm_P7.50mm_MKT" H 10188 5150 50  0001 C CNN
+F 2 "Capacitor_THT:C_Rect_L9.0mm_W3.2mm_P7.50mm_MKT" H 10188 5150 50  0001 C CNN
 F 3 "~" H 10150 5300 50  0001 C CNN
 	1    10150 5300
 	1    0    0    -1  
@@ -570,11 +564,6 @@ Wire Wire Line
 	7150 5500 7500 5500
 Wire Wire Line
 	9500 900  9500 600 
-Connection ~ 8400 900 
-Wire Wire Line
-	8400 600  8400 900 
-Wire Wire Line
-	9500 600  8400 600 
 Wire Wire Line
 	6900 1850 6900 1700
 Wire Wire Line
@@ -608,17 +597,7 @@ Wire Wire Line
 	4000 5400 3700 5400
 Connection ~ 3700 5400
 Wire Wire Line
-	6900 600  8400 600 
-Wire Wire Line
 	6900 600  6900 1700
-Connection ~ 8400 600 
-Wire Wire Line
-	9500 1600 9800 1600
-Wire Wire Line
-	9800 1600 9800 600 
-Wire Wire Line
-	9800 600  9500 600 
-Connection ~ 9500 600 
 Wire Wire Line
 	7700 2000 7700 1100
 Wire Wire Line
@@ -636,35 +615,27 @@ Wire Wire Line
 Wire Wire Line
 	6900 5300 7050 5300
 $Comp
-L Device:R R10
-U 1 1 5C980FE3
-P 10250 1100
-F 0 "R10" H 10320 1146 50  0000 L CNN
-F 1 "5K" H 10320 1055 50  0000 L CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 10180 1100 50  0001 C CNN
-F 3 "~" H 10250 1100 50  0001 C CNN
-	1    10250 1100
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R11
-U 1 1 5C9A026E
-P 10250 1200
-F 0 "R11" H 10320 1246 50  0000 L CNN
-F 1 "5K" H 10320 1155 50  0000 L CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 10180 1200 50  0001 C CNN
-F 3 "~" H 10250 1200 50  0001 C CNN
-	1    10250 1200
-	0    1    1    0   
+L power:VCC #PWR0102
+U 1 1 5C9B7B47
+P 7700 950
+F 0 "#PWR0102" H 7700 800 50  0001 C CNN
+F 1 "VCC" H 7717 1123 50  0000 C CNN
+F 2 "" H 7700 950 50  0001 C CNN
+F 3 "" H 7700 950 50  0001 C CNN
+	1    7700 950 
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10400 1100 10700 1100
+	7700 950  7700 1100
 Wire Wire Line
-	10700 1200 10400 1200
+	9500 1100 10700 1100
 Wire Wire Line
-	9500 1100 10100 1100
+	9500 1200 10700 1200
 Wire Wire Line
-	10100 1200 9500 1200
+	6900 600  9500 600 
+NoConn ~ 9500 1600
+NoConn ~ 8500 1000
+NoConn ~ 8500 900 
 Wire Bus Line
 	10800 750  10800 2100
 Wire Bus Line
