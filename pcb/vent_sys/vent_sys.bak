@@ -158,12 +158,6 @@ Wire Wire Line
 Connection ~ 1650 5400
 Wire Wire Line
 	1650 5400 2300 5400
-Wire Wire Line
-	8500 900  8400 900 
-Wire Wire Line
-	8500 1000 8400 1000
-Wire Wire Line
-	8400 1000 8400 900 
 Text Notes 1200 5600 0    50   ~ 0
 L
 Text Notes 1200 5700 0    50   ~ 0
@@ -323,7 +317,7 @@ U 1 1 5C59BFB3
 P 7800 5400
 F 0 "U3" H 7800 5725 50  0000 C CNN
 F 1 "MOC3021M" H 7800 5634 50  0000 C CNN
-F 2 "Package_DIP:DIP-6_W10.16mm" H 7600 5200 50  0001 L CIN
+F 2 "Package_DIP:DIP-6_W7.62mm_Socket_LongPads" H 7600 5200 50  0001 L CIN
 F 3 "http://www.fairchildsemi.com/ds/MO/MOC3020M.pdf" H 7775 5400 50  0001 L CNN
 	1    7800 5400
 	1    0    0    -1  
@@ -570,11 +564,6 @@ Wire Wire Line
 	7150 5500 7500 5500
 Wire Wire Line
 	9500 900  9500 600 
-Connection ~ 8400 900 
-Wire Wire Line
-	8400 600  8400 900 
-Wire Wire Line
-	9500 600  8400 600 
 Wire Wire Line
 	6900 1850 6900 1700
 Wire Wire Line
@@ -608,17 +597,7 @@ Wire Wire Line
 	4000 5400 3700 5400
 Connection ~ 3700 5400
 Wire Wire Line
-	6900 600  8400 600 
-Wire Wire Line
 	6900 600  6900 1700
-Connection ~ 8400 600 
-Wire Wire Line
-	9500 1600 9800 1600
-Wire Wire Line
-	9800 1600 9800 600 
-Wire Wire Line
-	9800 600  9500 600 
-Connection ~ 9500 600 
 Wire Wire Line
 	7700 2000 7700 1100
 Wire Wire Line
@@ -652,6 +631,11 @@ Wire Wire Line
 	9500 1100 10700 1100
 Wire Wire Line
 	9500 1200 10700 1200
+Wire Wire Line
+	6900 600  9500 600 
+NoConn ~ 9500 1600
+NoConn ~ 8500 1000
+NoConn ~ 8500 900 
 Wire Bus Line
 	10800 750  10800 2100
 Wire Bus Line

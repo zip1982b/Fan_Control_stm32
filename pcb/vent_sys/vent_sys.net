@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source C:\Users\MrZang\workspace\Fan_control\pcb\vent_sys\vent_sys.sch)
-    (date "27.03.2019 15:30:06")
+    (date "31.03.2019 10:30:31")
     (tool "Eeschema (5.0.2)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -105,7 +105,7 @@
       (tstamp 5C59C0A7))
     (comp (ref U3)
       (value MOC3021M)
-      (footprint Package_DIP:DIP-6_W10.16mm)
+      (footprint Package_DIP:DIP-6_W7.62mm_Socket_LongPads)
       (datasheet http://www.fairchildsemi.com/ds/MO/MOC3020M.pdf)
       (libsource (lib Relay_SolidState) (part MOC3021M) (description "Random Phase Opto-Triac, Vdrm 400V, Ift 15mA, DIP6"))
       (sheetpath (names /) (tstamps /))
