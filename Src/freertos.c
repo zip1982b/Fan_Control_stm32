@@ -66,6 +66,15 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+portBASE_TYPE xStatusChS;
+xTaskHandle xChangeSpeed_Handle;
+
+portBASE_TYPE xStatusF;
+xTaskHandle xFan_Handle;
+
+static xQueueHandle SpeedQueue_handle = NULL;
+
+
 
 /* USER CODE END PD */
 
@@ -78,19 +87,23 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId change_speedHandle;
-osThreadId work_fanHandle;
-osMessageQId xQueueDIMHandle;
+osThreadId defaultTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
    
 /* USER CODE END FunctionPrototypes */
 
-void Start_change_speed(void const * argument);
-void Start_work_fan(void const * argument);
+void StartDefaultTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+void vChangeSpeed(void const * argument);
+
+void vFan(void const * argument);
+
+
+
 
 /**
   * @brief  FreeRTOS initialization
@@ -115,77 +128,82 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the thread(s) */
-  /* definition and creation of change_speed */
-  osThreadDef(change_speed, Start_change_speed, osPriorityNormal, 0, 128);
-  change_speedHandle = osThreadCreate(osThread(change_speed), NULL);
 
-  /* definition and creation of work_fan */
-  osThreadDef(work_fan, Start_work_fan, osPriorityNormal, 0, 128);
-  work_fanHandle = osThreadCreate(osThread(work_fan), NULL);
+
+  /* definition and creation of ChangeSpeed task*/
+  xStatusChS = xTaskCreate(vChangeSpeed, "Change Speed", 128, NULL, osPriorityNormal, &xChangeSpeed_Handle);
+  if(xStatusChS == pdPASS)
+  		printf("Task  Change Speed is created!\n");
+  	else
+  		printf("Task Change Speed is not created\n");
+
+  xStatusF = xTaskCreate(vFan, (signed char*)"Fan", 128, NULL, osPriorityNormal, &xFan_Handle);
+    if(xStatusF == pdPASS)
+    		printf("Task Fan is created!\n");
+    	else
+    		printf("Task Fan is not created\n");
+
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
-  /* Create the queue(s) */
-  /* definition and creation of xQueueDIM */
-  osMessageQDef(xQueueDIM, 5, uint8_t);
-  xQueueDIMHandle = osMessageCreate(osMessageQ(xQueueDIM), NULL);
-
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+    SpeedQueue_handle = xQueueCreate(3, sizeof(uint8_t));
   /* USER CODE END RTOS_QUEUES */
 }
 
-/* USER CODE BEGIN Header_Start_change_speed */
+
+
+/* USER CODE BEGIN Header vChangeSpeed */
 /**
-  * @brief  Function implementing the change_speed thread.
+  * @brief  Function implementing the vChangeSpeed thread.
   * @param  argument: Not used 
   * @retval None
   */
-/* USER CODE END Header_Start_change_speed */
-void Start_change_speed(void const * argument)
+/* USER CODE END Header vChangeSpeed */
+void vChangeSpeed(void const * argument)
 {
-
-  /* USER CODE BEGIN Start_change_speed */
-	uint8_t dim = 0;
+  /* USER CODE BEGIN */
   /* Infinite loop */
+  uint8_t speed = 0;
   for(;;)
   {
-    //osDelay(1);
-	  xQueueReceive(xQueueDIMHandle, &dim, 0);
-	  HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_SET); //gpio_set_level(Fan_in, 1);
-	  vTaskDelay(50 / portTICK_RATE_MS);
-	  HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_RESET); //gpio_set_level(Fan_in, 0);
-	  vTaskDelay(dim / portTICK_RATE_MS);
+    speed = 0;
+    xQueueSendToBack(SpeedQueue_handle, &speed, 100/portTICK_RATE_MS);
+    vTaskDelay(2000/portTICK_RATE_MS);
+    speed = 100;
+    xQueueSendToBack(SpeedQueue_handle, &speed, 100/portTICK_RATE_MS);
+    vTaskDelay(2000/portTICK_RATE_MS);
   }
-  /* USER CODE END Start_change_speed */
+  /* USER CODE END vChangeSpeed */
 }
 
-/* USER CODE BEGIN Header_Start_work_fan */
+
+
+/* USER CODE BEGIN Header vFan */
 /**
-* @brief Function implementing the work_fan thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_Start_work_fan */
-void Start_work_fan(void const * argument)
+  * @brief  Function implementing the vFan thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header vFan */
+void vFan(void const * argument)
 {
-  /* USER CODE BEGIN Start_work_fan */
-	uint8_t dim = 0;
+  /* USER CODE BEGIN */
   /* Infinite loop */
+  uint8_t speed = 0;
   for(;;)
   {
-	  dim = 0; // 100%
-	  xQueueSendToBack(xQueueDIMHandle, &dim, 100/portTICK_RATE_MS);
-	  vTaskDelay(20000 / portTICK_RATE_MS);
-	  dim = 100; // 50%
-	  xQueueSendToBack(xQueueDIMHandle, &dim, 100/portTICK_RATE_MS);
-	  vTaskDelay(20000 / portTICK_RATE_MS);
-    //osDelay(1);
+	xQueueReceive(SpeedQueue_handle, &speed, 0);
+	HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_SET);
+	vTaskDelay(50/portTICK_RATE_MS);
+	HAL_GPIO_WritePin(Fan_GPIO_Port, Fan_Pin, GPIO_PIN_RESET);
+	vTaskDelay(speed/portTICK_RATE_MS);
   }
-  /* USER CODE END Start_work_fan */
+  /* USER CODE END vFan */
 }
+
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

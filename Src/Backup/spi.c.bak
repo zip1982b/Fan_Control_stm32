@@ -1,9 +1,8 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
+  * File Name          : SPI.c
+  * Description        : This file provides code for the configuration
+  *                      of the SPI instances.
   ******************************************************************************
   * This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -47,70 +46,104 @@
   *
   ******************************************************************************
   */
-/* USER CODE END Header */
-
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal.h"
+#include "spi.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
+/* USER CODE BEGIN 0 */
 
-/* USER CODE END Includes */
+/* USER CODE END 0 */
 
-/* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
+SPI_HandleTypeDef hspi1;
 
-/* USER CODE END ET */
+/* SPI1 init function */
+void MX_SPI1_Init(void)
+{
 
-/* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
 
-/* USER CODE END EC */
-
-/* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
-
-/* USER CODE END EM */
-
-/* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
-
-/* USER CODE BEGIN EFP */
-
-/* USER CODE END EFP */
-
-/* Private defines -----------------------------------------------------------*/
-#define LED_Blue_Pin GPIO_PIN_13
-#define LED_Blue_GPIO_Port GPIOC
-#define Fan_Pin GPIO_PIN_15
-#define Fan_GPIO_Port GPIOC
-#define Reset_Pin GPIO_PIN_1
-#define Reset_GPIO_Port GPIOA
-#define IRQ_DIO0_Pin GPIO_PIN_2
-#define IRQ_DIO0_GPIO_Port GPIOA
-#define DIO1_Pin GPIO_PIN_3
-#define DIO1_GPIO_Port GPIOA
-#define NSS_Pin GPIO_PIN_4
-#define NSS_GPIO_Port GPIOA
-#define Herz_counter_Pin GPIO_PIN_12
-#define Herz_counter_GPIO_Port GPIOB
-#define Herz_counter_EXTI_IRQn EXTI15_10_IRQn
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
-
-#ifdef __cplusplus
 }
-#endif
 
-#endif /* __MAIN_H */
+void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+{
+
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  if(spiHandle->Instance==SPI1)
+  {
+  /* USER CODE BEGIN SPI1_MspInit 0 */
+
+  /* USER CODE END SPI1_MspInit 0 */
+    /* SPI1 clock enable */
+    __HAL_RCC_SPI1_CLK_ENABLE();
+  
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    /**SPI1 GPIO Configuration    
+    PA5     ------> SPI1_SCK
+    PA6     ------> SPI1_MISO
+    PA7     ------> SPI1_MOSI 
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_6;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    /* SPI1 interrupt Init */
+    HAL_NVIC_SetPriority(SPI1_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(SPI1_IRQn);
+  /* USER CODE BEGIN SPI1_MspInit 1 */
+
+  /* USER CODE END SPI1_MspInit 1 */
+  }
+}
+
+void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
+{
+
+  if(spiHandle->Instance==SPI1)
+  {
+  /* USER CODE BEGIN SPI1_MspDeInit 0 */
+
+  /* USER CODE END SPI1_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_SPI1_CLK_DISABLE();
+  
+    /**SPI1 GPIO Configuration    
+    PA5     ------> SPI1_SCK
+    PA6     ------> SPI1_MISO
+    PA7     ------> SPI1_MOSI 
+    */
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
+
+    /* SPI1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(SPI1_IRQn);
+  /* USER CODE BEGIN SPI1_MspDeInit 1 */
+
+  /* USER CODE END SPI1_MspDeInit 1 */
+  }
+} 
+
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
